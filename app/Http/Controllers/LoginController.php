@@ -13,10 +13,7 @@ class LoginController extends Controller
             'password' => $request->post('senha'),
         ];
         if(Auth::attempt($credentials)){
-            $avaliacoes = [
-              'Péssimo - ★', 'Ruim - ★★', 'Neutro - ★★★', 'Bom - ★★★★', 'Ótimo - ★★★★★'  
-            ];
-            return view ('formulario', compact('avaliacoes'));
+            return redirect()->route('formulario');
         }else{
             return redirect()->back()->withInput()->withErrors(['login' => 'Login/Senha incorreto, peço que tente novamente !']);
         }

@@ -9,6 +9,13 @@ use PDF;
 
 class FormularioController extends Controller
 {
+    public function index(){
+        $avaliacoes = [
+            'Péssimo - ★', 'Ruim - ★★', 'Neutro - ★★★', 'Bom - ★★★★', 'Ótimo - ★★★★★'  
+        ];
+        return view ('formulario', compact('avaliacoes'));
+    }
+
     public function resultadoresumo(Request $request){      
         $dados = $request->all();
         $method = $request->getMethod();

@@ -32,6 +32,7 @@ Route::prefix('login')->group(function() {
 });
 
 Route::prefix('formulario')->group (function() {
+    Route::get('/', [FormularioController::class, 'index'])->name('formulario');
     Route::get('resultadoresumo', [FormularioController::class, 'resultadoresumo'])->name('resultadoresumo.get');
     Route::post('resultadoresumo', [FormularioController::class, 'resultadoresumo'])->name('resultadoresumo.post');
     Route::post('resultado', [FormularioController::class, 'resultado'])->name('resultado');

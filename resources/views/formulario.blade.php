@@ -9,7 +9,7 @@
                         <div class="flex-c pr-1" style="position: relative">
                             <label for="" class="white mt-1 mb-1">CNPJ/CPF:</label>
                             <div class="flex-ac">
-                                <input type="text" class="formcliente black border pb-05" value="{{ old('cnpjcpf') }}" name="cnpjcpf" id="cnpjcpf" maxlength="18" placeholder="Informe seu CNPJ/CPF" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required autofocus>
+                                <input type="text" class="formcliente black border pb-05" onblur="buscarCNPJ()" onclick="buscarCNPJ()" value="{{ old('cnpjcpf') }}" name="cnpjcpf" id="cnpjcpf" maxlength="18" placeholder="Informe seu CNPJ/CPF" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required autofocus>
                                 <div class="input-button" data-tooltip="Consultar dados do CNPJ !" data-tooltip-location="top">
                                     <i class="fas fa-search" id="pesquisar"></i>
                                 </div>
@@ -158,46 +158,39 @@
     var estados = document.getElementById('estados');
     var cnpjcpf = document.getElementById('cnpjcpf');
 
-$(document).ready(function(){
+    // Adicionamos o evento onclick ao botão com o ID "pesquisar"
+    function buscarCNPJ(){
 
-// Adicionamos o evento onclick ao botão com o ID "pesquisar"
-    $('#pesquisar').on('click', function(e) {
-    
-    // Apesar do botão estar com o type="button", é prudente chamar essa função para evitar algum comportamento indesejado
-    e.preventDefault();
-    
-    // Aqui recuperamos o cnpj preenchido do campo e usamos uma expressão regular para limpar da string tudo aquilo que for diferente de números
-    cnpjcpf = $('#cnpjcpf').val().replace(/[^0-9]/g, '');
-    
-    // Fazemos uma verificação simples do cnpj confirmando se ele tem 14 caracteres
-    if(cnpjcpf.length == 14) {
-    
-        // Aqui rodamos o ajax para a url da API concatenando o número do CNPJ na url
-        $.ajax({
-        url:'https://www.receitaws.com.br/v1/cnpj/' + cnpjcpf,
-        method:'GET',
-        dataType: 'jsonp', // Em requisições AJAX para outro domínio é necessário usar o formato "jsonp" que é o único aceito pelos navegadores por questão de segurança
-        complete: function(xhr){
+        // Aqui recuperamos o cnpj preenchido do campo e usamos uma expressão regular para limpar da string tudo aquilo que for diferente de números
+        cnpjcpf = $('#cnpjcpf').val().replace(/[^0-9]/g, '');
         
-            // Aqui recuperamos o json retornado
-            response = xhr.responseJSON;
+        // Fazemos uma verificação simples do cnpj confirmando se ele tem 14 caracteres
+        if(cnpjcpf.length == 14) {
+        
+            // Aqui rodamos o ajax para a url da API concatenando o número do CNPJ na url
+            $.ajax({
+            url:'https://www.receitaws.com.br/v1/cnpj/' + cnpjcpf,
+            method:'GET',
+            dataType: 'jsonp', // Em requisições AJAX para outro domínio é necessário usar o formato "jsonp" que é o único aceito pelos navegadores por questão de segurança
+            complete: function(xhr){
             
-            // Na documentação desta API tem esse campo status que retorna "OK" caso a consulta tenha sido efetuada com sucesso
-            if(response.status == 'OK') {
-            
-            // Agora preenchemos os campos com os valores retornados
-            $('#cep').val(response.cep);
-            // Aqui exibimos uma mensagem caso tenha ocorrido algum erro
-            } else {
-            alert(response.message); // Neste caso estamos imprimindo a mensagem que a própria API retorna
+                // Aqui recuperamos o json retornado
+                response = xhr.responseJSON;
+                
+                // Na documentação desta API tem esse campo status que retorna "OK" caso a consulta tenha sido efetuada com sucesso
+                if(response.status == 'OK') {
+                
+                // Agora preenchemos os campos com os valores retornados
+                $('#cep').val(response.cep);
+                // Aqui exibimos uma mensagem caso tenha ocorrido algum erro
+                } else {
+                    alert(response.message); // Neste caso estamos imprimindo a mensagem que a própria API retorna
+                }
             }
+            });
+        
         }
-        });
-    
-    // Tratativa para caso o CNPJ não tenha 14 caracteres
-    }
-    });
-});
+    };
      
     function formatarCNPJCPF(obj) {
         var startPos = obj.selectionStart;
