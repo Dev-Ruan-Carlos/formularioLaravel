@@ -14,7 +14,7 @@ class LoginController extends Controller
         ];
         if(Auth::attempt($credentials)){
             $avaliacoes = [
-              'Péssimo - ★', 'Ruim - ★★', 'Neutro - ★★★', 'Bom - ★★★★★', 'Ótimo - ★★★★★'  
+              'Péssimo - ★', 'Ruim - ★★', 'Neutro - ★★★', 'Bom - ★★★★', 'Ótimo - ★★★★★'  
             ];
             return view ('formulario', compact('avaliacoes'));
         }else{

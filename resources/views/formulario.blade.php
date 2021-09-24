@@ -6,59 +6,68 @@
             @method('POST')
                 <div class="fundoazul" id="fundoazul">
                     <div class="flex-jc" id="">
-                        <div class="flex-c">
-                            <label for="" class="white mt-1 mb-1">Razão Social:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="ex: SGBr Sistemas LTDA" name="razao" maxlength="70" required>
+                        <div class="flex-c pr-1" style="position: relative">
+                            <label for="" class="white mt-1 mb-1">CNPJ/CPF:</label>
+                            <div class="flex-ac">
+                                <input type="text" class="formcliente black border pb-05" value="{{ old('cnpjcpf') }}" name="cnpjcpf" id="cnpjcpf" maxlength="18" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required autofocus>
+                                <div class="input-button" data-tooltip="Consultar dados do CNPJ !" data-tooltip-location="top">
+                                    <i class="fas fa-search" id="pesquisar"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="flex-c">
-                            <label for="" class="white mt-1 mb-1">CNPJ/CPF:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" value="" name="cnpjcpf" placeholder="CNPJ/CPF" name="cnpjcpf" maxlength="18" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required>
+                            <label for="" class="white mt-1 mb-1">Cep:</label>
+                            <input type="text" class="formcliente black border mr-1 pb-05" value="" name="cep" id="cep" placeholder="Exemplo (00000-000)" oninput="formatarCEP(this)" maxlength="9" required>
                         </div>
                     </div>
                     <div class="flex-jc">
                         <div class="flex-c">
-                            <label for="" class="white mt-1 mb-1">Endereço:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="Informe seu bairro, rua e número" name="endereco" maxlength="70" required>
+                            <label for="" class="white mt-1 mb-1">Rua:</label>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="rua" name="rua" maxlength="30" required>
                         </div>
+                        <div class="flex-c">
+                            <label for="" class="white mt-1 mb-1">Bairro:</label>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="bairro" name="bairro" maxlength="30" required>
+                        </div>    
                     </div>
                     <div class="flex-jc">
                         <div class="flex-c">
                             <label for="" class="white mt-1 mb-1">Estados:</label>
-                            <select id="" class="formcliente border mr-1 pb-05" placeholder="Estados" name="estados">
-                                <option class="p-1" value="null" name="Estados...">Estados..</option>
-                                <option class="p-1" value="Acre (AC)" name="estado">Acre (AC)</option>
-                                <option class="p-1" value="Alagoas (AL)" name="estado">Alagoas (AL)</option>
-                                <option class="p-1" value="Amapá (AP)" name="estado">Amapá (AP)</option>
-                                <option class="p-1" value="Amazonas (AM)" name="estado">Amazonas (AM)</option>
-                                <option class="p-1" value="Bahia (BA)" name="estado">Bahia (BA)</option>
-                                <option class="p-1" value="Ceará (CE)" name="estado">Ceará (CE)</option>
-                                <option class="p-1" value="Distrito Federal (DF)" name="estado">Distrito Federal (DF)</option>
-                                <option class="p-1" value="Espírito Santo (ES)" name="estado">Espírito Santo (ES)</option>
-                                <option class="p-1" value="Goiás (GO)" name="estado">Goiás (GO)</option>
-                                <option class="p-1" value="Maranhão (MA)" name="estado">Maranhão (MA)</option>
-                                <option class="p-1" value="Mato Grosso (MT)" name="estado">Mato Grosso (MT)</option>
-                                <option class="p-1" value="Mato Grosso do Sul (MS)" name="estado">Mato Grosso do Sul (MS)</option>
-                                <option class="p-1" value="Minas Gerais (MG)" name="estado">Minas Gerais (MG)</option>
-                                <option class="p-1" value="Pará (PA)" name="estado">Pará (PA)</option>
-                                <option class="p-1" value="Paraíba (PB)" name="estado">Paraíba (PB)</option>
-                                <option class="p-1" value="Paraná (PR)" name="estado">Paraná (PR)</option>
-                                <option class="p-1" value="Pernambuco (PE)" name="estado">Pernambuco (PE)</option>
-                                <option class="p-1" value="Piauí (PI)" name="estado">Piauí (PI)</option>
-                                <option class="p-1" value="Rio de Janeiro (RJ)" name="estado">Rio de Janeiro (RJ)</option>
-                                <option class="p-1" value="Rio Grande do Norte (RN)" name="estado">Rio Grande do Norte (RN)</option>
-                                <option class="p-1" value="Rio Grande do Sul (RS)" name="estado">Rio Grande do Sul (RS)</option>
-                                <option class="p-1" value="Rondônia (RO)" name="estado">Rondônia (RO)</option>
-                                <option class="p-1" value="Roraima (RR)" name="estado">Roraima (RR)</option>
-                                <option class="p-1" value="Santa Catarina (SC)" name="estado">Santa Catarina (SC)</option>
-                                <option class="p-1" value="São Paulo (SP)" name="estado">São Paulo (SP)</option>
-                                <option class="p-1" value="Sergipe (SE)" name="estado">Sergipe (SE)</option>
-                                <option class="p-1" value="Tocantins (TO)" name="estado">Tocantins (TO)</option>
+                            <select id="estados" class="formcliente border mr-1 pb-05 black" placeholder="Estados" name="estados">
+                                <option class="p-1 black" value="null" name="Estados...">Estados..</option>
+                                <option class="p-1 black" value="12">Acre (AC)</option>
+                                <option class="p-1 black" value="27">Alagoas (AL)</option>
+                                <option class="p-1 black" value="16">Amapá (AP)</option>
+                                <option class="p-1 black" value="13">Amazonas (AM)</option>
+                                <option class="p-1 black" value="29">Bahia (BA)</option>
+                                <option class="p-1 black" value="23">Ceará (CE)</option>
+                                <option class="p-1 black" value="53">Distrito Federal (DF)</option>
+                                <option class="p-1 black" value="32">Espírito Santo (ES)</option>
+                                <option class="p-1 black" value="52">Goiás (GO)</option>
+                                <option class="p-1 black" value="21">Maranhão (MA)</option>
+                                <option class="p-1 black" value="51">Mato Grosso (MT)</option>
+                                <option class="p-1 black" value="50">Mato Grosso do Sul (MS)</option>
+                                <option class="p-1 black" value="31">Minas Gerais (MG)</option>
+                                <option class="p-1 black" value="15">Pará (PA)</option>
+                                <option class="p-1 black" value="25">Paraíba (PB)</option>
+                                <option class="p-1 black" value="41">Paraná (PR)</option>
+                                <option class="p-1 black" value="26">Pernambuco (PE)</option>
+                                <option class="p-1 black" value="22">Piauí (PI)</option>
+                                <option class="p-1 black" value="33">Rio de Janeiro (RJ)</option>
+                                <option class="p-1 black" value="24">Rio Grande do Norte (RN)</option>
+                                <option class="p-1 black" value="43">Rio Grande do Sul (RS)</option>
+                                <option class="p-1 black" value="11">Rondônia (RO)</option>
+                                <option class="p-1 black" value="14">Roraima (RR)</option>
+                                <option class="p-1 black" value="42">Santa Catarina (SC)</option>
+                                <option class="p-1 black" value="35">São Paulo (SP)</option>
+                                <option class="p-1 black" value="28">Sergipe (SE)</option>
+                                <option class="p-1 black" value="17">Tocantins (TO)</option>
                             </select>
                             {{-- informar as UFs --}}
                         </div>
                         <div class="flex-c">
                             <label for="" class="white mt-1 mb-1">Cidade:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="Cidade" name="cidade" maxlength="40" required>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="cidade" name="cidade" maxlength="40" required>
                         </div>
                     </div>
                         <div class="white flex-jc m-1">
@@ -131,7 +140,7 @@
                         <h3>A baixo informe seu feedback/sugestão referente ao MeuSG !</h3>
                     </div> 
                     <div class="feedback flex-jc p-2">
-                        <textarea class="comments border p-1" placeholder="Informe seu feedback/sugestão (Opcional)" id="" name="feedback" maxlength="425"></textarea>
+                        <textarea class="comments border p-1" placeholder="Informe seu feedback/sugestão. Permitido até 330 caracteres (Opcional)" id="" name="feedback" maxlength="330"></textarea>
                     </div>
                     <div id="enviar" class="flex-jc pb-2">                 
                         <button type="submit" class="button enviar">Enviar</button>
@@ -139,26 +148,73 @@
                 </div>
             </div>
         </form>
+
 <script>
-        window.addEventListener('load', function (){  
-     })
+
+    var cep = document.getElementById('cep');
+    var rua = document.getElementById('rua');
+    var bairro = document.getElementById('bairro');
+    var cidade = document.getElementById('cidade');
+    var estados = document.getElementById('estados');
+    var cnpjcpf = document.getElementById('cnpjcpf');
+
+$(document).ready(function(){
+
+// Adicionamos o evento onclick ao botão com o ID "pesquisar"
+    $('#pesquisar').on('click', function(e) {
+    
+    // Apesar do botão estar com o type="button", é prudente chamar essa função para evitar algum comportamento indesejado
+    e.preventDefault();
+    
+    // Aqui recuperamos o cnpj preenchido do campo e usamos uma expressão regular para limpar da string tudo aquilo que for diferente de números
+    cnpjcpf = $('#cnpjcpf').val().replace(/[^0-9]/g, '');
+    
+    // Fazemos uma verificação simples do cnpj confirmando se ele tem 14 caracteres
+    if(cnpjcpf.length == 14) {
+    
+        // Aqui rodamos o ajax para a url da API concatenando o número do CNPJ na url
+        $.ajax({
+        url:'https://www.receitaws.com.br/v1/cnpj/' + cnpjcpf,
+        method:'GET',
+        dataType: 'jsonp', // Em requisições AJAX para outro domínio é necessário usar o formato "jsonp" que é o único aceito pelos navegadores por questão de segurança
+        complete: function(xhr){
+        
+            // Aqui recuperamos o json retornado
+            response = xhr.responseJSON;
+            
+            // Na documentação desta API tem esse campo status que retorna "OK" caso a consulta tenha sido efetuada com sucesso
+            if(response.status == 'OK') {
+            
+            // Agora preenchemos os campos com os valores retornados
+            $('#cep').val(response.cep);
+            // Aqui exibimos uma mensagem caso tenha ocorrido algum erro
+            } else {
+            alert(response.message); // Neste caso estamos imprimindo a mensagem que a própria API retorna
+            }
+        }
+        });
+    
+    // Tratativa para caso o CNPJ não tenha 14 caracteres
+    }
+    });
+});
      
-     function formatarCNPJCPF(obj) {
-          var startPos = obj.selectionStart;
-          if(startPos == obj.value.length)
-              startPos = -1;
-              
-          if(startPos < 0){
-              obj.value = obj.value.replace(/[^0-9]/g,'');
-              obj.value = obj.value.trim();
-              if (obj.value.length > 14)
-                  obj.value = obj.value.slice(0, 14);
-              if (obj.value.length > 0) {
-                  if (obj.value.length <= 11)
-                      obj.value = obj.value.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2')
-                  else
-                      obj.value = obj.value.replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2')
-              }
+    function formatarCNPJCPF(obj) {
+        var startPos = obj.selectionStart;
+        if(startPos == obj.value.length)
+            startPos = -1;
+            
+        if(startPos < 0){
+            obj.value = obj.value.replace(/[^0-9]/g,'');
+            obj.value = obj.value.trim();
+            if (obj.value.length > 14)
+                obj.value = obj.value.slice(0, 14);
+            if (obj.value.length > 0) {
+                if (obj.value.length <= 11)
+                    obj.value = obj.value.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+                else
+                    obj.value = obj.value.replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2')
+            }
           }
           if(startPos > 0){
               if(obj.value[startPos + 1] == '/' || obj.value[startPos + 1] == '.' || obj.value[startPos + 1] == '-'){
@@ -296,5 +352,108 @@
           return false;
       }
      }   
-     </script>
+
+//  AJAX consulta CEP
+
+function formatarCEP(obj) {
+    var startPos = obj.selectionStart;
+    if(startPos == obj.value.length)
+        startPos = -1;
+        
+    if(startPos < 0){
+        obj.value = obj.value.replace(/[^0-9]/g,'');
+        obj.value = obj.value.trim();
+        if (obj.value.length > 8)
+            obj.value = obj.value.slice(0, 8);    
+        if (obj.value.length > 0) {
+            obj.value = obj.value.replace(/(\d{5})(\d)/, '$1-$2');
+        }
+    }
+    if(startPos > 0){
+        obj.value = obj.value.replace(/[^0-9]/g,'');
+        obj.value = obj.value.trim();
+        if (obj.value.length > 8)
+            obj.value = obj.value.slice(0, 8);    
+        if (obj.value.length > 0) {
+            obj.value = obj.value.replace(/(\d{5})(\d)/, '$1-$2');
+        }
+        obj.setSelectionRange(startPos, startPos);
+    }
+}
+
+$(document).ready(function() {
+
+function limpa_formulário_cep() {
+    // Limpa valores do formulário de cep.
+    // $("#rua").val("");
+    // $("#bairro").val("");
+    // $("#cidade").val("");
+    // $("#estados").val("");
+
+    rua.value = '';
+    bairro.value = '';
+    cidade.value = '';
+    estados.value = '';
+}
+
+//Quando o campo cep perde o foco.
+    
+$("#cep").blur(function() {
+    //Nova variável "cep" somente com dígitos.
+    var numcep = cep.value.replace(/[^0-9]/g, '');
+
+    //Verifica se campo cep possui valor informado.
+    if (numcep != "") {
+
+        //Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        //Valida o formato do CEP.
+        if(validacep.test(numcep)) {
+
+            //Preenche os campos com "..." enquanto consulta webservice.
+            // $("#rua").val("...");
+            // $("#bairro").val("...");
+            // $("#cidade").val("...");
+            // $("#estados").val("...");
+
+            rua.value = 'Carregando/Loading...';
+            bairro.value = 'Carregando/Loading...';
+            cidade.value = 'Carregando/Loading...';
+            estados.value = 'Carregando/Loading...';
+
+            //Consulta o webservice viacep.com.br/
+            $.getJSON("https://viacep.com.br/ws/"+ numcep +"/json/?callback=?", function(dados) {
+                if (!("erro" in dados)) {
+                    //Atualiza os campos com os valores da consulta.
+                    // $("#rua").val(dados.logradouro);
+                    // $("#bairro").val(dados.bairro);
+                    // $("#cidade").val(dados.localidade);
+                    // $("#estados").val(dados.uf);
+
+                    rua.value = dados.logradouro;
+                    bairro.value = dados.bairro;
+                    cidade.value = dados.localidade;
+                    estados.value = dados.ibge.substr(0,2);
+                } //end if.
+                else {
+                    //CEP pesquisado não foi encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
+            });
+        } //end if.
+        else {
+            //cep é inválido.
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+        }
+    } //end if.
+    else {
+        //cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+    }
+});
+});
+</script>
 @endsection

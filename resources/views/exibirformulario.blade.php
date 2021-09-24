@@ -160,11 +160,12 @@ if($method == 'GET'){
             @method('POST')
             <H2 class="m-1">Dados da empresa</H2>
                 <div class="linha-horizontal"></div>
-            <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="ex: SGBr Sistemas LTDA" name="razao" maxlength="70" value="{{$dados['razao']}}">
             <input type="text" class="formcliente black border mr-1 pb-05" value="{{$dados['cnpjcpf']}}" name="cnpjcpf" placeholder="CNPJ/CPF" name="cnpjcpf" maxlength="18" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required>
-            <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="Informe seu bairro, rua e número" value="{{$dados['endereco']}}" name="endereco" maxlength="70" required>
-            <select id="" class="formcliente border mr-1 pb-05" placeholder="Estados" name="estados">
-                <option value="{{$dados['estados']}}" selected></option>
+            <input type="text" class="formcliente black border mr-1 pb-05" id="" name="cep" maxlength="70" value="{{$dados['cep']}}">
+            <input type="text" class="formcliente black border mr-1 pb-05" id="" value="{{$dados['rua']}}" name="rua" maxlength="70" required>
+            <input type="text" class="formcliente black border mr-1 pb-05" id="" value="{{$dados['bairro']}}" name="bairro" maxlength="70" required>
+            <select id="" class="formcliente border mr-1 pb-05" placeholder="Estados" name="uf">
+                <option value="{{($dados['uf'])}}" selected></option>
             </select>
             <input type="text" class="formcliente black border mr-1 pb-05" id="" placeholder="Cidade" value="{{$dados['cidade']}}" name="cidade" maxlength="40" required>
             <input class="radio" name="site" value="{{$dados['site']}}" id="radio1" type='radio' checked/>
@@ -179,21 +180,25 @@ if($method == 'GET'){
         <div class="box black border">
             <H2 class="m-1">Dados da empresa</H2>
                 <div class="linha-horizontal"></div>
-                <div class="exib-razao m-05 pl-05 font">   
-                    <span>Razão Social: </span>
-                    <span><b>{{($dados['razao'])}}</b></span>
-                </div>
                 <div class="exib-cnpjcpf m-05 pl-05 font">
                     <span>CNPJ/CPF: </span>
                     <span><b>{{($dados['cnpjcpf'])}}</b></span>   
                 </div>
+                <div class="exib-razao m-05 pl-05 font">   
+                    <span>CEP: </span>
+                    <span><b>{{($dados['cep'])}}</b></span>
+                </div>
                 <div class="exib-endereco m-05 pl-05 font">
-                    <span>Endereço: </span>
-                    <span><b>{{($dados['endereco'])}}</b></span>
+                    <span>Rua: </span>
+                    <span><b>{{($dados['rua'])}}</b></span>
+                </div>
+                <div class="exib-endereco m-05 pl-05 font">
+                    <span>Bairro: </span>
+                    <span><b>{{($dados['bairro'])}}</b></span>
                 </div>
                 <div class="exib-estado m-05 pl-05 font">
                     <span>UF: </span>
-                        <span><b>{{($dados['estados'])}}</b></span>
+                        <span><b>{{($dados['uf'])}}</b></span>
                 </div>
                 <div class="exib-cidade m-05 pl-05 font">
                     <span>Cidade: </span>

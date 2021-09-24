@@ -27,7 +27,8 @@ Route::prefix('cadastro')->group(function() {
 Route::prefix('login')->group(function() {
     Route::get('/', [LoginController::class, 'index'])->name('login.get');
     Route::post('entrar', [LoginController::class, 'entrar'])->name('login.entrar');
-    Route::get('sair', 'LoginController@sair')->name('login.sair');
+    Route::get('consultacnpj', [LoginController::class, 'consultacnpj'])->name('login.consultacnpj');
+    // Route::get('sair', 'LoginController@sair')->name('login.sair');
 });
 
 Route::prefix('formulario')->group (function() {

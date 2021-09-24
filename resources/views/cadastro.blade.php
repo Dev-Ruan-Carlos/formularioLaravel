@@ -10,7 +10,7 @@
                 @enderror  
                 <div class="form-input"> 
                     <label for="login">Seu login:</label>
-                    <input id="loginCadastro" name="loginCadastro" required="required" type="text" placeholder="Login" />
+                    <input id="loginCadastro" name="loginCadastro" required="required" type="text" placeholder="Login" autofocus/>
                 </div>
                 <div class="form-input"> 
                     <label for="email">Seu e-mail:</label>
