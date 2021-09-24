@@ -9,7 +9,7 @@
                         <div class="flex-c pr-1" style="position: relative">
                             <label for="" class="white mt-1 mb-1">CNPJ/CPF:</label>
                             <div class="flex-ac">
-                                <input type="text" class="formcliente black border pb-05" value="{{ old('cnpjcpf') }}" name="cnpjcpf" id="cnpjcpf" maxlength="18" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required autofocus>
+                                <input type="text" class="formcliente black border pb-05" value="{{ old('cnpjcpf') }}" name="cnpjcpf" id="cnpjcpf" maxlength="18" placeholder="Informe seu CNPJ/CPF" oninput="formatarCNPJCPF(this)" oninput="validarCNPJCPF()" required autofocus>
                                 <div class="input-button" data-tooltip="Consultar dados do CNPJ !" data-tooltip-location="top">
                                     <i class="fas fa-search" id="pesquisar"></i>
                                 </div>
@@ -23,11 +23,11 @@
                     <div class="flex-jc">
                         <div class="flex-c">
                             <label for="" class="white mt-1 mb-1">Rua:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="rua" name="rua" maxlength="30" required>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="rua" name="rua" maxlength="30" placeholder="Rua: " required>
                         </div>
                         <div class="flex-c">
                             <label for="" class="white mt-1 mb-1">Bairro:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="bairro" name="bairro" maxlength="30" required>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="bairro" name="bairro" maxlength="30" placeholder="Bairro: " required>
                         </div>    
                     </div>
                     <div class="flex-jc">
@@ -67,7 +67,7 @@
                         </div>
                         <div class="flex-c">
                             <label for="" class="white mt-1 mb-1">Cidade:</label>
-                            <input type="text" class="formcliente black border mr-1 pb-05" id="cidade" name="cidade" maxlength="40" required>
+                            <input type="text" class="formcliente black border mr-1 pb-05" id="cidade" name="cidade" maxlength="40" placeholder="Cidade: " required>
                         </div>
                     </div>
                         <div class="white flex-jc m-1">

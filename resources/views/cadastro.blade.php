@@ -10,15 +10,15 @@
                 @enderror  
                 <div class="form-input"> 
                     <label for="login">Seu login:</label>
-                    <input id="loginCadastro" name="loginCadastro" required="required" type="text" placeholder="Login" autofocus/>
+                    <input id="loginCadastro" name="loginCadastro" required="required" type="text" placeholder="Login" maxlength="30" autofocus/>
                 </div>
                 <div class="form-input"> 
                     <label for="email">Seu e-mail:</label>
-                    <input id="emailCadastro" name="emailCadastro" required="required" type="email" placeholder="contato@contato.com"/> 
+                    <input id="emailCadastro" name="emailCadastro" required="required" type="email" placeholder="contato@contato.com" maxlength="30"/> 
                 </div>
                 <div class="form-input"> 
                     <label for="password">Sua senha:</label>
-                    <input id="senhaCadastro" name="password" required="required" type="password" placeholder="ex: 1234"/>
+                    <input id="senhaCadastro" name="password" required="required" type="password" placeholder="ex: 1234" maxlength="42"/>
                 </div> 
                 <div class="blue">                   
                     Já tem conta?
